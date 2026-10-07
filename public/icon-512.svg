@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="TradePulse Tool icon">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#181826" />
+      <stop offset="100%" stop-color="#090d17" />
+    </linearGradient>
+    <linearGradient id="glow" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#EC4899" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="120" fill="url(#bg)"/>
+  <rect x="72" y="72" width="368" height="368" rx="108" fill="rgba(10, 17, 31, 0.9)" stroke="rgba(255,255,255,0.12)"/>
+  <path d="M150 320 L245 205 L296 259 L377 180" fill="none" stroke="url(#glow)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="150" cy="320" r="18" fill="#2AD39E"/>
+  <circle cx="245" cy="205" r="18" fill="#8B5CF6"/>
+  <circle cx="296" cy="259" r="18" fill="#EC4899"/>
+  <circle cx="377" cy="180" r="18" fill="#2AD39E"/>
+  <path d="M145 151 L233 151" stroke="rgba(255,255,255,0.8)" stroke-width="16" stroke-linecap="round"/>
+  <path d="M145 360 L373 360" stroke="rgba(255,255,255,0.08)" stroke-width="12" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0b1020" />
+    <meta name="description" content="TradePulse Tool — live market analysis and paper trading dashboard." />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/icon-192.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icon-192.svg" />
+    <title>TradePulse Tool</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark" aria-label="TradePulse logo">
+            <span class="brand-mark__inner"></span>
+          </div>
+          <div class="brand-copy">
+            <span class="brand-copy__title">TradePulse Tool</span>
+          </div>
+        </div>
+
+        <div class="toolbar-actions">
+          <button class="icon-button" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <button class="icon-button settings-button" aria-label="Open settings">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M19.14 12.94c.04-.31.06-.63.06-.94s-.02-.63-.06-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.18l-2.39.96a7.2 7.2 0 0 0-1.63-.94L14.6 2.5a.5.5 0 0 0-.5-.34h-3.8a.5.5 0 0 0-.5.34l-.36 2.5c-.57.22-1.1.53-1.63.94l-2.39-.96a.5.5 0 0 0-.6.18L2.71 9.84a.5.5 0 0 0 .12.64l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32a.5.5 0 0 0 .6.18l2.39-.96c.53.41 1.06.72 1.63.94l.36 2.5a.5.5 0 0 0 .5.34h3.8a.5.5 0 0 0 .5-.34l.36-2.5c.57-.22 1.1-.53 1.63-.94l2.39.96a.5.5 0 0 0 .6-.18l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58Zm-7.14 2.06a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Z"/>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="main-panel">
+        <section class="tab-bar" aria-label="Market tabs">
+          <button class="tab-button active" data-tab="activated">Activated</button>
+          <button class="tab-button" data-tab="stopped">Stopped</button>
+          <button class="tab-button" data-tab="featured">Featured</button>
+        </section>
+
+        <label class="search-field" aria-label="Search asset">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M10.2 3a7.2 7.2 0 0 1 5.68 12.23l4.12 4.12a1 1 0 1 1-1.41 1.41l-4.12-4.12A7.2 7.2 0 1 1 10.2 3Zm0 2a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4Z"/>
+          </svg>
+          <input type="search" placeholder="Search asset…" />
+        </label>
+
+        <section class="asset-card">
+          <div class="asset-card__header">
+            <div>
+              <div class="pair-row">
+                <div class="pair-name">EUR/NZD</div>
+                <span class="pair-badge">OTC</span>
+              </div>
+              <div class="timeframe-inline">
+                <span class="timeframe-chip">1m</span>
+              </div>
+            </div>
+            <div class="status-flag">
+              <span class="status-dot"></span>
+              Activated
+            </div>
+          </div>
+
+          <div class="asset-card__meta">
+            <div class="toggle-wrap">
+              <span>Live</span>
+              <label class="switch" aria-label="Toggle asset activation">
+                <input type="checkbox" checked />
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="toggle-state">ON</div>
+          </div>
+
+          <div class="market-stats">
+            <div class="market-stat">
+              <span class="stat-label">Live price</span>
+              <strong id="live-price">1.8524</strong>
+            </div>
+            <div class="market-stat">
+              <span class="stat-label">Last update</span>
+              <strong id="last-update">--:--:--</strong>
+            </div>
+            <div class="market-stat">
+              <span class="stat-label">Signal</span>
+              <strong id="status-signal">Bullish bias</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="status-strip">
+          <div class="live-indicator">
+            <span class="live-pill">LIVE</span>
+            <span class="live-dot"></span>
+          </div>
+          <div class="connection-state">
+            <span class="state-label">Connection status:</span>
+            <span id="connection-status" class="state-value offline">Offline</span>
+          </div>
+        </section>
+
+        <div class="countdown-panel">
+          <span>Current candle</span>
+          <strong id="countdown-display">00:59</strong>
+        </div>
+
+        <section class="chart-card">
+          <div class="chart-head">
+            <div>
+              <div class="chart-title">EUR/NZD</div>
+              <div class="chart-subtitle">1 MIN</div>
+            </div>
+            <div class="chart-actions">
+              <button class="chip-button active" data-timeframe="1m">1m</button>
+              <button class="chip-button" data-timeframe="2m">2m</button>
+              <button class="chip-button" data-timeframe="5m">5m</button>
+              <button class="chip-button" data-timeframe="15m">15m</button>
+            </div>
+          </div>
+
+          <div class="chart-wrap">
+            <canvas id="candlesChart" width="900" height="360" aria-label="Candlestick chart"></canvas>
+          </div>
+        </section>
+
+        <section class="signal-panel">
+          <div class="signal-row">
+            <div>
+              <div class="signal-title">EUR/NZD</div>
+              <div class="signal-subtitle">1 MIN</div>
+            </div>
+            <div class="signal-badge call" id="signal-badge">CALL</div>
+          </div>
+
+          <div class="signal-metrics">
+            <div class="metric-box">
+              <span class="metric-label">Signal</span>
+              <strong id="signal-name">CALL</strong>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">Confidence</span>
+              <strong id="signal-confidence">78%</strong>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">Trend</span>
+              <strong id="signal-trend">BULLISH</strong>
+            </div>
+          </div>
+
+          <div class="indicator-grid">
+            <div class="indicator-item"><span>RSI</span><strong id="ind-rsi">61.4</strong></div>
+            <div class="indicator-item"><span>EMA 9</span><strong id="ind-ema9">1.8518</strong></div>
+            <div class="indicator-item"><span>EMA 21</span><strong id="ind-ema21">1.8504</strong></div>
+            <div class="indicator-item"><span>MACD</span><strong id="ind-macd">+0.0026</strong></div>
+            <div class="indicator-item"><span>Support</span><strong id="ind-support">1.8498</strong></div>
+            <div class="indicator-item"><span>Resistance</span><strong id="ind-resistance">1.8547</strong></div>
+          </div>
+        </section>
+
+        <section class="history-panel">
+          <div class="panel-header">
+            <h3>Signal history</h3>
+          </div>
+          <div class="history-table">
+            <div class="history-row header-row">
+              <span>Asset</span>
+              <span>Time</span>
+              <span>TF</span>
+              <span>Signal</span>
+              <span>Result</span>
+            </div>
+            <div class="history-row">
+              <span>EUR/NZD</span>
+              <span>20:45</span>
+              <span>1m</span>
+              <span class="tag call">CALL</span>
+              <span class="result pending">Pending</span>
+            </div>
+            <div class="history-row">
+              <span>EUR/USD</span>
+              <span>20:43</span>
+              <span>2m</span>
+              <span class="tag put">PUT</span>
+              <span class="result win">Win</span>
+            </div>
+            <div class="history-row">
+              <span>GBP/JPY</span>
+              <span>20:38</span>
+              <span>1m</span>
+              <span class="tag neutral">NEUTRAL</span>
+              <span class="result loss">Loss</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="paper-trading-card">
+          <div class="panel-header compact">
+            <h3>Paper trading</h3>
+            <span class="demo-pill">Demo</span>
+          </div>
+
+          <div class="paper-balance">
+            <span>Virtual balance</span>
+            <strong>₹10,000</strong>
+          </div>
+
+          <div class="trade-actions">
+            <button class="trade-button call">CALL / UP</button>
+            <button class="trade-button put">PUT / DOWN</button>
+          </div>
+
+          <div class="trade-amounts">
+            <button class="amount-button active">₹100</button>
+            <button class="amount-button">₹500</button>
+            <button class="amount-button">₹1,000</button>
+            <button class="amount-button custom">Custom</button>
+          </div>
+        </section>
+
+        <section class="settings-panel">
+          <div class="settings-list">
+            <div class="setting-item"><span>API configuration</span><span>Not configured</span></div>
+            <div class="setting-item"><span>Data provider status</span><span>Offline</span></div>
+            <div class="setting-item"><span>Default timeframe</span><span>1m</span></div>
+            <div class="setting-item toggle-item"><span>Dark mode</span><span class="on-pill">On</span></div>
+            <div class="setting-item toggle-item"><span>Notifications</span><span class="on-pill">On</span></div>
+            <div class="setting-item toggle-item"><span>Sound</span><span class="on-pill">On</span></div>
+            <div class="setting-item"><span>Demo balance reset</span><span>Reset</span></div>
+            <div class="setting-item"><span>About TradePulse</span><span>v1.0</span></div>
+          </div>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="Main navigation">
+        <button class="nav-button active"><span>Home</span></button>
+        <button class="nav-button"><span>Signals</span></button>
+        <button class="nav-button"><span>Chart</span></button>
+        <button class="nav-button"><span>History</span></button>
+        <button class="nav-button"><span>Settings</span></button>
+      </nav>
+    </div>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
